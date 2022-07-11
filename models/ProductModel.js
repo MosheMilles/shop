@@ -1,0 +1,27 @@
+const mongoose = require("mongoose");
+const Joi = require("joi");
+const productSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    image: String,
+    price: Number,
+    quantity: Number,
+    isWeighable: Boolean,
+    category: String
+});
+const ProductModel = mongoose.model("real_products", productSchema);
+
+exports.ProductModel = ProductModel;
+
+exports.validProduct = (_bodytData) => {
+    let joiSchema = Joi.object({
+        id: Joi.number().min(0).max(1000000).required(),
+        name: Joi.string().min(1).max(50).required(),
+        image: Joi.string().min(1).max(300).required(),
+        price: Joi.number().min(0).max(10000).required(),
+        quantity: Joi.number().min(0).max(10000).required(),
+        isWeighable: Joi.boolean().required(),
+        category: Joi.string().min(2).max(50).required()
+    });
+    return joiSchema.validate(_bodytData);
+}
