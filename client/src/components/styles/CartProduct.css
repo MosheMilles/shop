@@ -1,0 +1,29 @@
+.product-row {
+    height: 40px;
+    display:flex;
+}
+
+.product-quantity{
+    flex:1;
+}
+
+.image{
+    flex:1;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-title{
+    flex:1;
+}
+
+.product-price{
+    flex:1;
+}
+
+.product-total-price{
+    flex:1;
+}

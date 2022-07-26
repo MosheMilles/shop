@@ -1,0 +1,9 @@
+.productsAndCart{
+  display: flex;
+}
+.products{
+  flex: 4;
+}
+.cart{
+  flex:1
+}

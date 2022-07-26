@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     isWeighable: Boolean,
     category: String
 });
-const ProductModel = mongoose.model("real_products", productSchema);
+const ProductModel = mongoose.model("products", productSchema);
 
 exports.ProductModel = ProductModel;
 

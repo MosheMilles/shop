@@ -1,0 +1,6 @@
+.products {
+    width: 75%;
+    display  : flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
