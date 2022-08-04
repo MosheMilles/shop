@@ -7,9 +7,11 @@ import Products from './components/Products';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <App />
+    {/* <Router>
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="products" element=
@@ -33,7 +35,7 @@ ReactDOM.render(
           </Route>
         </Route>
       </Routes>
-    </Router >
+    </Router > */}
   </React.StrictMode >,
   document.getElementById('root')
 );
