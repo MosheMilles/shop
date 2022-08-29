@@ -3,7 +3,7 @@ const router=express.Router();
 
 router.get("/",(req,res)=>{
     console.log('kljkhjj')
-    res.sendFile('C:/Users/noare/OneDrive/שולחן העבודה/mosh/monkies/client/build/index.html');
+    res.sendFile('C:/Users/noare/OneDrive/שולחן העבודה/mosh/super/client/build/index.html');
     console.log('hiii')
 });
 

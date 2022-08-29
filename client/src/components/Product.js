@@ -15,8 +15,8 @@ function Product({ product }) {
     return (
         <div className="Product-card">
             <Card sx={{ maxWidth: 280 }} align="center" raised={isRaised}
-                onMouseEnter={() => { setIsRaised(true) }} onMouseOut={() => { setIsRaised(false) }}
-                onClick={openDialog}>
+                onMouseEnter={() => { setIsRaised(true) }} onMouseOut={() => { setIsRaised(false) }}>
+                <div className="dialog_openning" onClick={openDialog}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -33,6 +33,7 @@ function Product({ product }) {
 
                     </Typography>
                 </CardContent>
+                </div>
                 <div>
                     <Button onClick={() => { cart.add(product) }}>+</Button>
                     <span>{product.quantity}</span>

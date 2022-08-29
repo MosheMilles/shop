@@ -1,11 +1,22 @@
 const express=require("express");
 const http=require("http");
-// const { override } = require("joi");
 const path=require("path");
 const app=express();
 const {routesInit}=require("./routes/config_route");
 require ('dotenv').config({override:true});
 require ("./db/mongo_connect");
+
+
+///////////////
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+  if (req.method == "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
+/////////////
 
 app.use(express.json());
 

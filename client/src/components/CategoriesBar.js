@@ -47,7 +47,6 @@ console.log(categories)
         </Toolbar>
       </AppBar>
     </Box>
-    <Outlet />
     </div>
   );
 }
