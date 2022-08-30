@@ -4,35 +4,30 @@ import './index.css';
 import App from './components/App';
 import CategoriesBar from './components/CategoriesBar';
 import Products from './components/Products';
+import Admin from './components/Admin';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-     <Router>
+    <Router>
       <Routes>
-        <Route path="/" element={  <App /> }>
-          <Route path="products" >
-            <Route
-              index
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>Select a category</p>
-                </main>
-              }
-            />
-            <Route path=":category" element={
-              <div>
-                <Products />
-              </div>
+        <Route path="/" element={<App />}>
+          <Route
+            index
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>Select a category</p>
+              </main>
             }
-            />
-
+          />
+          <Route path="products" >
+            <Route path=":category" element={<Products />} />
           </Route>
+          <Route path="admin" element={<Admin />} />
         </Route>
       </Routes>
-    </Router > 
+    </Router >
   </React.StrictMode >,
   document.getElementById('root')
 );
