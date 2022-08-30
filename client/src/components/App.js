@@ -47,11 +47,15 @@ function App() {
     };
   }
 
+  function buyCart(){
+
+  }
+
   return (
     <CartProvider value={cart}>
       <div className="app" dir="rtl" >
         <CategoriesBar />
-        <Cart totalPrice={totalPrice} />
+        <Cart totalPrice={totalPrice} buyCart={buyCart} />
         <Outlet />
       </div>
 
