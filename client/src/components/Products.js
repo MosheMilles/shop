@@ -1,8 +1,7 @@
 import './styles/Products.css';
 import { useParams } from 'react-router-dom';
 import Product from './Product.js';
-import { allProducts } from '../data.js';
-function Products() {
+function Products({allProducts}) {
 
   let params = useParams();
   let category = params.category

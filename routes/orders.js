@@ -1,5 +1,8 @@
 const express = require("express");
+const { OrderModel } = require("../models/OrderModel");
 const router = express.Router();
+
+console.log('orders')
 
 router.get("/", async (req, res) => {
     let data = await OrderModel.find({});
@@ -11,6 +14,7 @@ router.post("/", async (req, res) => {
    
     let order = new OrderModel(req.body);
     await order.save();
+    console.log(order)
     res.json(order);
 });
 

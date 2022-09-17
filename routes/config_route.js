@@ -1,6 +1,6 @@
 const indexR=require("./index");
 const usersR=require("./users");
-const shopR=require("./shop");
+const ordersR=require("./orders");
 const productsR=require("./products");
 const clientR=require("./clientRoute");
 
@@ -9,7 +9,7 @@ exports.routesInit=(app)=>{
 
     app.use("/api/users",usersR);
 
-    app.use("/api/shop",shopR);
+    app.use("/api/orders",ordersR);
 
     app.use("/api/products",productsR);
 
