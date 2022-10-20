@@ -1,7 +1,7 @@
 import './styles/Product.css';
 import { useState, useContext } from 'react';
 import CartContext from '../contexts/CartContext';
-import { Card, CardMedia, CardContent, CardActions, Button, Typography, Dialog, DialogTitle } from '@mui/material';
+import { Card, CardMedia, CardContent, Button, Typography, Dialog, DialogTitle } from '@mui/material';
 
 function Product({ product }) {
 

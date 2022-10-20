@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, Outlet, Routes, Route } from "react-router-dom";
-import OrderRow from "./OrderRow";
+import { Routes, Route, Outlet } from "react-router-dom";
 import OrdersList from "./OrdersList";
 import Order from "./Order";
+import Crud from "./Crud";
+import Intro from "./Intro";
 
-function Admin() {
+function Admin({orders,fetchOrders}) {
     console.log('sgajksdg')
-    const [orders, setOrders] = useState([]);
+   
 
-    // fetchOrders()
     useEffect(() => {
         console.log('hiii')
         fetchOrders()
@@ -18,28 +18,21 @@ function Admin() {
 
     console.log(orders)
     console.log('jklhlk')
-    function fetchOrders() {
-        fetch("http://localhost:3001/api/orders")
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-                console.log('gdskjghakjdhgas');
-                setOrders(data);
-            });
-    };
+   
     console.log(orders)
     return (
-        <Routes>
-            <Route path="/" element={
-                <div>
-                    <OrdersList orders={orders} />
-                </div>
-            } />
-
-            <Route path="orders/:id" element={
-                <Order orders={orders} />
-            } />
-        </Routes >
+        // <Routes>
+        //     <Route path="/" element={<AdminLayout />}>
+        //         <Route index element={<OrdersList orders={orders} />} />
+        //         <Route path="orders/:_id" element={<h1>sdgjakg;asjg;s</h1>} />
+        //         <Route path="crud" element={<Crud />} />
+        //         {/* <Order orders={orders} /> */}
+        //     </Route>
+        // </Routes>
+        <div>
+        <h1>Admin</h1>
+        <Outlet />
+        </div>
     )
 };
 export default Admin;

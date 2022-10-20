@@ -2,14 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
-import CategoriesBar from './components/CategoriesBar';
-import Products from './components/Products';
-import Admin from './components/Admin';
-import OrdersList from './components/OrdersList';
-import Order from './components/Order';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import OrdersContext from './contexts/OrdersContext';
 
 ReactDOM.render(
   <React.StrictMode>

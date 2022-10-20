@@ -3,28 +3,30 @@ import { Link, useParams } from "react-router-dom";
 
 function Order({ orders }) {
 
-    ///////////////////////
-// const [order,setOrder]=useState({})
-    ///////////////////////
+    //in page refreshing, it's not compiled because the prop "orders" is passed before the fetching.
+    //maybe it's necessary to fetch here again with useEffect and not to pass it.
+
+console.log(orders)
+
 
     let params = useParams();
-    console.log(params.id)
-    let id = params.id
+    console.log(params._id)
+    let id = params._id
 
     console.log(id)
     console.log(orders)
 
 
-    let currOrder = orders.find(order => order._id === id);
-    console.log(currOrder)
-    console.log(currOrder.products)
+    let order = orders.find(order => order._id === id);
+    console.log(order)
+    console.log(order.products)
 //    setOrder(currOrder)
     // let products=order.products
 
 
     return (
         <div>
-            {currOrder.products.map(product=>
+            {order.products.map(product=>
             <div key={product.id}>{product.quantity} {product.name} {product.price} </div>
                 )}
                 <Link to=".."><button>חזור</button></Link>

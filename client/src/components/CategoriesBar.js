@@ -1,17 +1,15 @@
 import './styles/categoriesBar.css';
 import * as React from 'react';
-import {allProducts} from '../data.js';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import {Outlet,NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 
 
 
-export default function CategoriesBar({filterByCategory}) {
+export default function CategoriesBar({allProducts,filterByCategory}) {
   let categories = allProducts.map(p => p.category).filter((value, index, array) => array.indexOf(value) === index);
 console.log(categories)
 
