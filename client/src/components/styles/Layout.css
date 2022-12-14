@@ -1,0 +1,17 @@
+.productsAndCart{
+  position:static;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+.products{
+    flex-grow: 3;
+}
+
+.cart{
+  margin-left: 5px;
+  margin-right: 10px;
+  flex-grow: 1;
+  /* border-right-style:dashed ;
+  border: 1px dashed rgb(241, 206, 8) */
+}

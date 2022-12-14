@@ -1,0 +1,32 @@
+h3{
+    color: black;
+}
+
+#order_number{
+    margin-top: 15px;
+}
+
+#client_name{
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+    color:black
+}
+
+.general_details{
+    /* text-align: center; */
+}
+
+#client_details{
+   justify-content: space-around;
+    display: flex;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+/* #comments{
+    display: flex;
+    justify-content: space-around;
+} */

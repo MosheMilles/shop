@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import CartContext from "../contexts/CartContext";
-import './styles/CartProduct.css';
+import './styles/ProductRow.css';
 import ProductDetails from './ProductDetails';
 
-function CartProduct({ product }) {
+function ProductRow({ product }) {
     const cart = useContext(CartContext);
     const [open, setOpen] = useState(false);
     product.isOpen = open;
@@ -16,11 +16,11 @@ function CartProduct({ product }) {
                     <img className="cart_product_image" src={product.image} alt={product.name} />
                 </div>
                 <div className="product_title" onClick={product.openDialog}><span>{product.name}</span></div>
-                <div className="product_total_price">₪ {(product.quantity * product.price).toFixed(2)}</div>
+                <div className="product_price">{product.price}<span> {product.isWeighable?"₪ לק\"ג":"₪ ליחידה"}</span></div>
                 <div className="quantity">
-                    <div className="button" onClick={() => { cart.add(product) }}>+</div>
-                    <div>{product.quantity} {product.isWeighable?"ק\"ג":"יחידות"}</div>
-                    <div className="button" onClick={() => { cart.remove(product) }}>-</div>
+                    <span className="button" onClick={() => { cart.add(product) }}>+</span>
+                    <span>{product.quantity} {product.isWeighable?"ק\"ג":"יחידות"}</span>
+                    <span className="button" onClick={() => { cart.remove(product) }}>-</span>
                 </div>
                 
             </div>
@@ -28,4 +28,4 @@ function CartProduct({ product }) {
         </div>
     )
 }
-export default CartProduct;
+export default ProductRow;

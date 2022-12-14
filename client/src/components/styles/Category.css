@@ -1,0 +1,26 @@
+
+.category{
+    flex-grow: 1;
+    align-items: center;
+    list-style-type: none;
+    cursor: pointer;
+    border-left-style:solid;
+    border-left-color:white ;
+    border-left-width:1px ;
+    text-align: center;
+    background-color: rgb(230, 75, 19);
+    border-bottom-left-radius:15px ;
+    border-bottom-right-radius:15px ;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;    /* align-items: center; */
+}
+
+.category_text{
+color:rgb(255, 255, 255);
+font-weight:300;
+}
+
+
+.categoryTxt{
+    text-decoration: none;
+}
+

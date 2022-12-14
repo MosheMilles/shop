@@ -3,7 +3,7 @@ function Submit({ cartProducts }) {
     return (
         <div>
             <h2>{cartProducts}</h2>
-            <h1>sdjkghsdjkghsdjkhg</h1>
+            <h1>ההזמנה נקלטה בהצלחה</h1>
         </div>
     )
 }

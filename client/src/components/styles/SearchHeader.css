@@ -1,0 +1,46 @@
+.search_bar{
+    display: flex;
+    background-color: rgb(10, 145, 145);
+    height: 120px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    text-decoration: none;
+}
+
+.search_div{
+    display: flex;
+    margin-left: 500px;
+}
+
+.search{
+    height: 45px;
+    width:600px;
+    border-radius: 10px;
+}
+
+.search_button{
+    position: relative;
+    left: 30px;
+    top:12px;
+    align-content: center;
+    height: 35px;
+}
+
+.search_dropdown{
+    position:absolute;
+    top:68px;
+    background-color: white;
+    width: 600px;
+    padding: 0;
+}
+
+li{
+    list-style: none;
+}
+
+.left{
+    flex-grow: 3;
+}

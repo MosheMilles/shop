@@ -1,51 +1,18 @@
-import './styles/categoriesBar.css';
+import './styles/CategoriesBar.css';
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import {NavLink} from 'react-router-dom';
+import { categories } from '../categories';
+import Category from './Category';
 
-
-
-
-export default function CategoriesBar({allProducts,filterByCategory}) {
-  let categories = allProducts.map(p => p.category).filter((value, index, array) => array.indexOf(value) === index);
-console.log(categories)
+export default function CategoriesBar({ allProducts, filterByCategory }) {
 
   return (
-    <div>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color='secondary'>
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display:'flex' }}
-          >
-            {categories.map(category => 
-             <NavLink
-             style={({ isActive }) => {
-               return {
-                 display: "block",
-                 margin: "1rem 0",
-                 color: isActive ? "red" : "",
-               };
-             }}
-             to={`/products/${category}`}
-             key={category}
-           >
-             {category}
-           </NavLink>
-                //  <Link to="/products"> <Box className='category' key={category} sx={{ display: 'flex', flexDirection: 'row', borderLeft:1, p:2 }}
-                //  onClick={e=>{filterByCategory(e.target.textContent)}}>{category}</Box></Link>
-            )}
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </Box>
-    </div>
+    <nav>
+      <ul className="categories">
+        {categories.map((category, index) =>
+        <Category category={category} index={index} />        
+        )}
+      </ul>
+    </nav>
   );
 }
 

@@ -1,6 +1,15 @@
-Box{
-    background-color: rgb(90, 6, 6);
+.categories{
+    display: flex;
+    list-style: none;
+    align-items: stretch;
+    padding: 0px;
+    height: 70px;
+    width: 100%;  
+    align-content: stretch;
+    margin: 1px 0px;
+    margin-bottom: 10px;
 }
-.category{
-    cursor: pointer;
-}
+/* 
+ul{
+    display: flex;
+    /* margin-bottom: 15px; */

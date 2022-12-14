@@ -4,3 +4,9 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.category_headline{
+    color:rgb(4, 87, 11);
+    display:block;
+    width: 100%;
+}

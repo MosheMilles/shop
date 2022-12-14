@@ -1,37 +1,23 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, Outlet } from "react-router-dom";
-import OrdersList from "./OrdersList";
-import Order from "./Order";
-import Crud from "./Crud";
-import Intro from "./Intro";
+import './styles/Admin.css';
+import { useEffect } from "react";
+import { Outlet, Link } from "react-router-dom";
+import Logo from "./Logo";
+import SearchHeader from './SearchHeader';
 
-function Admin({orders,fetchOrders}) {
-    console.log('sgajksdg')
-   
+function Admin({ orders, fetchOrders, allProducts }) {
 
     useEffect(() => {
-        console.log('hiii')
-        fetchOrders()
-        console.log('byyy')
+        fetchOrders();
         console.log(orders)
     }, []);
 
-    console.log(orders)
-    console.log('jklhlk')
-   
-    console.log(orders)
     return (
-        // <Routes>
-        //     <Route path="/" element={<AdminLayout />}>
-        //         <Route index element={<OrdersList orders={orders} />} />
-        //         <Route path="orders/:_id" element={<h1>sdgjakg;asjg;s</h1>} />
-        //         <Route path="crud" element={<Crud />} />
-        //         {/* <Order orders={orders} /> */}
-        //     </Route>
-        // </Routes>
         <div>
-        <h1>Admin</h1>
-        <Outlet />
+            <SearchHeader allProducts={allProducts} />
+            <div className="subheader">
+                <h1>ממשק ניהול</h1>
+            </div>
+            <Outlet />
         </div>
     )
 };

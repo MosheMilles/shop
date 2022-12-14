@@ -1,0 +1,15 @@
+.header{
+   margin: 200px;
+}
+
+.subheader{
+background-color: rgb(4, 87, 11);
+margin-top: 1px;
+}
+
+h1{
+    margin: 0;
+    color:white;
+    text-align: center;
+    font-weight: 300;
+}

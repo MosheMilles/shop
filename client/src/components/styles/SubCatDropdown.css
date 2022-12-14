@@ -1,0 +1,35 @@
+.dropdown_container{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 20px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.subCatDropdown{
+    display:none;
+}
+
+.subCatDropdownShow{
+    padding: 0;
+    width: 160px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    background-color:white;
+    border:1px solid gray;
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    list-style: none;
+    z-index: 2;
+}
+
+.subCategories{
+    color:rgb(11, 112, 53);
+    font-size:20px;
+    font-weight: 400;
+}
+
+.subCategories:hover{
+    color:red;
+}
+
+.category_link{
+    text-decoration: none;   
+}

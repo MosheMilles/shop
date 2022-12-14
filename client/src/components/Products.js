@@ -13,6 +13,9 @@ function Products({allProducts}) {
 
   return (
     <div className="products">
+      <div className="category_headline">
+        <h1>{category}</h1>
+      </div>
       {products.map((product) => 
         <Product key={product.id} className="card" product={product} />
       )};

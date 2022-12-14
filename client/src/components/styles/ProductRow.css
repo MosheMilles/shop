@@ -1,14 +1,13 @@
 .product_row {
     height: 50px;
     display: flex ;
-    border-bottom: 1px dashed rgb(4, 87, 11);
+    border-bottom: 1px solid rgb(4, 87, 11);
     justify-content: space-between;
     align-items: center;
     padding: 0px 8px;
 }
 
  .quantity{
-    display: flex;
     text-align: center; 
    flex-basis: 15%;
 }
@@ -36,7 +35,3 @@
 .product_total_price{
     flex-basis: 20%;
 } 
-
-.button{
-    cursor: pointer;
-}

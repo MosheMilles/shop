@@ -1,3 +1,7 @@
+.dialog_openning{
+  cursor: pointer;
+}
+
 .Product-card {
   width: 200px;
   height: 300px;
@@ -46,4 +50,8 @@
   h6 {
     color: #666;
     font-size: 14px;
+  }
+
+  .product_name{
+     color:rgb(4, 87, 11);
   }

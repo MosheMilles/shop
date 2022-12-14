@@ -1,0 +1,28 @@
+.order_row{
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.link_to_order{
+    width:92%;
+    display: flex;
+    text-decoration:none ;
+    color:rgb(4, 87, 11);
+ }
+ 
+ .cell{
+    width:8%;
+    text-align: center;
+    border: 1px solid rgb(10, 145, 145);
+     /* rgb(4, 87, 11); */
+ }
+ 
+ .cell#comment{
+    /* width:15%; */
+flex-grow: 1;
+ }
+ 
+ .cell#print,.cell#close{
+    width:4%;
+ }
