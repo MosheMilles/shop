@@ -1,9 +1,5 @@
-// בעיות:
-// - שליחת ההזמנה לא עובדת -
 
 // משימות לביצוע:
-//  - עיצוב כל האתר -
-// - פונקציית חיפוש מוצרים -
 // - הזדהות לממשק אדמין -
 // - שיפור והרחבת מסך שידור הזמנה -
 // - קבלת הזמנות ללא רפרוש (ajax?) -
@@ -17,28 +13,33 @@ import './styles/App.css';
 import Intro from './Intro';
 import Products from './Products';
 import { useEffect, useState } from 'react';
-import {  Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CartProvider } from '../contexts/CartContext';
 import Admin from './Admin';
 import Order from './Order';
 import InsertProduct from './InsertProduct';
 import OrdersList from './OrdersList';
 import Layout from './Layout';
-import Submit from './Submit';
+import SubmitApproval from './SubmitApproval';
 
 const axios = require('axios').default;
 
 function App() {
   const [allProducts, setAllProducts] = useState([]);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     fetchProducts()
   }, []);
   console.log(allProducts);
-  
+
   const [cartProducts, setCartProducts] = useState([]);
-  const cart = { data: cartProducts, add: (value) => addToCart(value), remove: (value) => removeFromCart(value) };
-  const totalPrice = cart.data.reduce((previous, current) => { return previous + current.quantity * current.price }, 0).toFixed(1);
+  const cart = {
+    data: cartProducts,
+    totalPrice:cartProducts.reduce((previous, current) => { return previous + current.quantity * current.price }, 0).toFixed(1),
+    add: (value) => addToCart(value),
+    remove: (value) => removeFromCart(value)
+  };
+  // const totalPrice = cart.data.reduce((previous, current) => { return previous + current.quantity * current.price }, 0).toFixed(1);
   const [orders, setOrders] = useState([]);
 
   function fetchProducts() {
@@ -76,23 +77,26 @@ function App() {
     };
   };
 
-  function submitOrder({ name, address, phoneNumber,time,comments }) {
+  function submitOrder({ name, address, phoneNumber, requestedTime, comments }) {
+    console.log(name)
+    console.log(cartProducts)
     console.log('hiiiii')
     ////////////abort!!!!
-    navigate("submit");
+    // navigate("submit");
     ///////////
     axios.post('http://localhost:3001/api/orders', {
-      name: { name },
-      address: { address },
-      phoneNumber: { phoneNumber },
-      time:{time},
-      clientComments:{comments},
-      products: { cartProducts },
-      // totalPrice: {totalPrice}
+      name: name,
+      address: address,
+      phoneNumber: phoneNumber,
+      // requestedTime:{requestedTime},
+      clientComments: comments,
+      products: cartProducts,
+      totalPrice: cart.totalPrice
     })
       .then(function (response) {
         console.log(response);
         console.log('submit');
+        navigate("submit_approval");
       })
       .catch(function (error) {
         console.log(error);
@@ -101,21 +105,21 @@ function App() {
 
   return (
     // <Router>
-      <CartProvider value={cart}>
-        <Routes>
-          <Route path="/" element={<Layout allProducts={allProducts} totalPrice={totalPrice} submitOrder={submitOrder} />}>
-            <Route index element={<Intro />} />
-            <Route path="products/:category" element={
-              <Products allProducts={allProducts} />} />
-          </Route>
-          <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} allProducts={allProducts} />} >
-            <Route index element={<OrdersList orders={orders} />} />
-            <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
-            <Route path="insert" element={<InsertProduct />} />
-          </Route>
-          <Route path="submit" element={<Submit products={cartProducts} />} />
-        </Routes>
-      </CartProvider>
+    <CartProvider value={cart}>
+      <Routes>
+        <Route path="/" element={<Layout allProducts={allProducts} submitOrder={submitOrder} />}>
+          <Route index element={<Intro />} />
+          <Route path="products/:category" element={
+            <Products allProducts={allProducts} />} />
+        </Route>
+        <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} allProducts={allProducts} />} >
+          <Route index element={<OrdersList orders={orders} />} />
+          <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
+          <Route path="insert" element={<InsertProduct />} />
+        </Route>
+        <Route path="submit_approval" element={<SubmitApproval products={cartProducts} />} />
+      </Routes>
+    </CartProvider>
     // </Router >
   );
 };

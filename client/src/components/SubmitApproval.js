@@ -1,10 +1,12 @@
-function Submit({ cartProducts }) {
+import './styles/SubmitApproval.css';
+
+function SubmitApproval({ cartProducts }) {
     console.log(cartProducts)
     return (
-        <div>
+        <div className="approval">
             <h2>{cartProducts}</h2>
             <h1>ההזמנה נקלטה בהצלחה</h1>
         </div>
     )
 }
-export default Submit;
+export default SubmitApproval;

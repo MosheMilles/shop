@@ -5,8 +5,7 @@ import CartContext from "../contexts/CartContext";
 import { Dialog, Button } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-function Cart({ totalPrice, submitOrder }) {
-  console.log(totalPrice)
+function Cart({ submitOrder }) {
   const cart = useContext(CartContext);
   const [open, setOpen] = useState(false);
   const openDialog = () => setOpen(true);
@@ -21,19 +20,19 @@ function Cart({ totalPrice, submitOrder }) {
     const name = nameInput.current.value;
     const address = addressInput.current.value;
     const phoneNumber = phoneNumberInput.current.value;
-    const time = timeInput.current.value;
+    const requestedTime = timeInput.current.value;
     const comments = commentsInput.current.value;
     console.log(name)
     console.log(address)
     // console.log(address.current.value)
-    submitOrder({ name, address, phoneNumber, time, comments })
+    submitOrder({ name, address, phoneNumber, requestedTime, comments })
   }
 
   return (
     <div className='cart'>
       <div className='cart_details'>
         <ShoppingCartOutlinedIcon className="material-icons" style={{ fontSize: '40px' }} />
-        <h3 className="total_price">{totalPrice} ש"ח</h3>
+        <h3 className="total_price">{cart.totalPrice} ש"ח</h3>
         <div className='button_container'><button className='cart_button' onClick={openDialog}>סיום קנייה</button></div>
       </div>
       <div className="cartProducts">
