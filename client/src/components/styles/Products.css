@@ -1,12 +1,41 @@
-.products {
-    width: 75%;
-    display  : flex;
-    flex-wrap: wrap;
-    justify-content: center;
+/* .headline_container{
+    position: fixed;
+    top:148px;
+    width: 71%;
+    z-index: 2;
+    /* background-color: white; */
+    /* display:flex;
+    height: 88px;
+    align-items: center;
+    justify-content: space-around;
+} */
+
+/* .icon_container{
+    align-items: center;
+    height: 80%;
+    margin-left:-50px;
 }
 
-.category_headline{
+.icon{
+    height:100%;
+} */
+
+/* .category_headline{
+    font-size: 50px;
+    font-weight: 350;
     color:rgb(4, 87, 11);
-    display:block;
-    width: 100%;
+}
+
+.search_in_category{
+    width:250px;
+    height: 30px;
+} */ 
+
+.cards{
+display  : flex;
+flex-wrap: wrap;
+justify-content: center;
+/* position: absolute;
+margin-top: 280px; */
+z-index: 1;
 }

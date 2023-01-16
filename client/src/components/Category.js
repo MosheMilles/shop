@@ -3,7 +3,7 @@ import SubCatDropdown from "./SubCatDropdown";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function Category({ category }) {
+function Category({ category, currCategory,changeCategory }) {
     const [dropdown, setDropdown] = useState(false);
     const onMouseEnter = () => { setDropdown(true) };
     const onMouseLeave = () => { setDropdown(false) };
@@ -16,9 +16,11 @@ function Category({ category }) {
                     >
                         <h3 className="category_text">{category.title}</h3>
                     </div>
-                    <SubCatDropdown
+                    <SubCatDropdown className="sub_cat_dropdown"
                         subCategories={category.subCategories}
                         dropdown={dropdown}
+                        currCategory={currCategory}
+                        changeCategory={changeCategory}
                     />
                 </>
             ) : (

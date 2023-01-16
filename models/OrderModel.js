@@ -10,7 +10,8 @@ const orderSchema = new mongoose.Schema({
     productsQuantity: Number,
     clientComments:String,
     staffComments:String,
-    products: Array
+    products: Array,
+    status:String
 });
 const OrderModel = mongoose.model("orders", orderSchema);
 

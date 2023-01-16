@@ -1,7 +1,12 @@
 .search_bar{
+    margin: 0;
+    position: fixed;
+    top:0;
+    width: 100%;
+    z-index: 4;
     display: flex;
-    background-color: rgb(10, 145, 145);
-    height: 120px;
+    background-color:rgb(2, 102, 97);
+    height: 85px;
     align-items: center;
     justify-content: space-between;
 }
@@ -12,7 +17,7 @@
 
 .search_div{
     display: flex;
-    margin-left: 500px;
+    margin-left:25%;
 }
 
 .search{
@@ -31,16 +36,13 @@
 
 .search_dropdown{
     position:absolute;
-    top:68px;
+    top:52px;
     background-color: white;
     width: 600px;
     padding: 0;
+    z-index: 4;
 }
 
 li{
     list-style: none;
-}
-
-.left{
-    flex-grow: 3;
 }

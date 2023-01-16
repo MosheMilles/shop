@@ -22,6 +22,7 @@
    border: 1px solid rgb(10, 145, 145);
    /* rgb(4, 87, 11); */
    text-align: center;
+   font-size:small;
 }
 
 .column_headline#comment{
@@ -35,4 +36,8 @@
 
 .column_headline h3{
 color:white;
+}
+
+.no_orders{
+   color:black
 }

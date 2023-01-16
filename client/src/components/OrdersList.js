@@ -1,11 +1,20 @@
 import './styles/OrdersList.css';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 import OrderRow from "./OrderRow";
 
 
 
-function OrdersList({ orders }) {
-console.log(orders)
+function OrdersList({ orders, setOrders, closeOrder, filterOrders }) {
+    console.log(orders);
+
+    function close(order) {
+        closeOrder(order);
+    }
+
+    function filter() {
+        setOrders(orders.filter(order => order.status === "new_order"));
+    }
     return (
         <div dir="rtl">
             <h1 className="orders_headline">הזמנות שהתקבלו</h1>
@@ -25,10 +34,9 @@ console.log(orders)
                 <div className="column_headline" id="print"></div>
                 <div className="column_headline" id="close"></div>
             </div>
-            {
-                orders.map(order => <OrderRow order={order} />)
+            {!orders ? <h1 className="no_orders">אין הזמנות חדשות</h1>:
+                orders.map(order => <OrderRow order={order} filterOrders={filter} closeOrder={close} />)
             }
-
         </div>
     )
 };

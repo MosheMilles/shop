@@ -7,8 +7,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductRow from './ProductRow';
 
-function SearchHeader({ allProducts }) {
+function SearchHeader({ allProducts, changeCategory }) {
     console.log(allProducts)
+    const change=()=>changeCategory();
     const [searchDropdown, setSearchDropdown] = useState([]);
     const updateSearch = (e) => {
         const searchArray = allProducts.filter(product => product.name.includes(e.target.value));
@@ -17,10 +18,10 @@ function SearchHeader({ allProducts }) {
     }
     return (
         <div className="search_bar">
-            <Link to=".." className="logo"><Logo /></Link>
+            <div onClick={change}><Logo /></div>
             <div className="search_div">
                 <input type="search" className="search" onChange={updateSearch} />
-                <div className="search_button"><SearchIcon style={{ color: "rgb(11, 112, 53)"}} /></div>
+                <div className="search_button"><SearchIcon style={{ color: "rgb(11, 112, 53)" }} /></div>
                 <ul className="search_dropdown">
                     {searchDropdown.map((product) => (
                         <li>

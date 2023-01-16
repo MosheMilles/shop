@@ -61,7 +61,7 @@ function Order({ orders, fetchOrders }) {
                         <div>{product.barcode}</div>
                         <div>{product.name}</div>
                         <div>{product.price}</div>
-                        <div>{product.price * product.quantity}</div>
+                        <div>{(product.price * product.quantity).toFixed(2)}</div>
                         <div>{product.comment}</div>
                         <div />
                         <div />
@@ -69,7 +69,7 @@ function Order({ orders, fetchOrders }) {
                 )}
             </div>
             <div className="order_details">
-                <div id="cell">מחיר כולל:<div>{order.totalPrice} ש"ח</div></div>
+            <div className="general_details"><span className="bold">מחיר כולל:</span><div>{order.totalPrice} ש"ח</div></div>
             </div>
             <button>הדפס</button>
             <Link to=".."><button>חזור</button></Link>

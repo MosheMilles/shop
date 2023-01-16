@@ -1,5 +1,7 @@
 .dropdown_container{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 20px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    z-index: 3;
+    position:relative;
 }
 
 .subCatDropdown{
@@ -11,19 +13,21 @@
     width: 160px;
     text-align: center;
     display: block;
-    position: absolute;
+    position: relative;
+    bottom:17px;
     background-color:white;
     border:1px solid gray;
     border-radius: 10px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     list-style: none;
-    z-index: 2;
+    z-index: 3;
 }
 
 .subCategories{
     color:rgb(11, 112, 53);
     font-size:20px;
     font-weight: 400;
+    z-index: 3;
 }
 
 .subCategories:hover{

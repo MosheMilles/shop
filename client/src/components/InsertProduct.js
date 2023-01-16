@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Insert(){
+function InsertProduct(){
     return (
         <div>
         <h1>כאן יהיה טופס להוספת מוצרים</h1>
@@ -8,4 +8,4 @@ function Insert(){
         </div>
     )
 }
-export default Insert;
+export default InsertProduct;
