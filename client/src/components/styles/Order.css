@@ -1,65 +1,28 @@
-.order_page{
-    width: 1200px;
-    margin: auto;
-}
-
-
-#order_number{
-    margin-top: 15px;
-}
-
-#client_name{
-    text-align: center;
-    font-weight: bold;
-    text-decoration: underline;
-    color:black
-}
-
-#client_details{
-   justify-content: space-around;
+.order_buttons{
     display: flex;
+    position: fixed;
+    top:200px;
+    left: 80px;
+}
+#back_to_orders{
+    background-color: red;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 80px;
+    margin-left: 40px;
 }
 
-.bold{
-    font-weight: bold;
+#print_order{
+    background-color: green;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 80px;
 }
 
-.regular{
-    font-weight: lighter;
+#order_container{
+    position: absolute;
+    top:200px;
+    width: 100%;
 }
-
-.products_list{
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 90%;
-}
-
-.row{
-    width:100%;
-    display: flex;
-    height: 50px;
-    align-items: center;
-}
-
-.row:first-child{
-    font-weight: bold;
-}
-
-.row div{
-    border: 1px solid;
-    flex-grow: 1;
-    width: 12.5%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-/* .row div div{
-text-align: center;
-margin: auto;
-width:70px;
-border: none;
-} */

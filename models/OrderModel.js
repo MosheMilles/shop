@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({
     id: Number,
-    time: Date,
-    requstedTime:Date,
+    time: String,
+    requstedTime:String,
     name: String,
     address:String,
     phoneNumber: String,

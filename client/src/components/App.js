@@ -10,23 +10,21 @@
 
 
 import './styles/App.css';
-import Intro from './Intro';
 import Products from './Products';
 import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CartProvider } from '../contexts/CartContext';
 import Admin from './Admin';
 import Order from './Order';
-import InsertProduct from './InsertProduct';
 import OrdersList from './OrdersList';
 import Layout from './Layout';
+import Submit from './Submit';
 import SubmitApproval from './SubmitApproval';
 
 function App() {
   const axios = require('axios').default;
   const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
-  const [products,setProducts]=useState([]);
   const [orders, setOrders] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const cart = {
@@ -43,18 +41,10 @@ function App() {
     fetchProducts()
   }, []);
 
-  // let orderNumber=0;
-  // orders.map((order)=>{
-  //   order.id=orderNumber;
-  //   orderNumber++;
-  //   return order.id;
-  // });
-
   function fetchProducts() {
     fetch("http://localhost:3001/api/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         setAllProducts(data)
       });
   };
@@ -68,25 +58,18 @@ function App() {
   };
 
   function closeOrder(order) {
-    console.log("hiii")
     axios.put(`http://localhost:3001/api/orders/${order._id}`, {
       ...order,
       status:"archieve"
     }).then(
-    console.log(order)
   )}
 
-//////////////
 function changeCategory(category){
-  console.log(category)
   if(category){
-    console.log(category)
-  // setCurrCategory(category);
   navigate(`products/${category}`)}
   else{setCurrCategory();
   navigate('..')}
 }
-//////////////
 
   function addToCart(product) {
     if (!cartProducts.includes(product)) {
@@ -141,8 +124,8 @@ function changeCategory(category){
         <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} allProducts={allProducts} />} >
           <Route index element={<OrdersList orders={orders} setOrders={setOrders} closeOrder={closeOrder} />} />
           <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
-          <Route path="insert" element={<InsertProduct />} />
         </Route>
+        <Route path="submit" element={<Submit submitOrder={submitOrder} />} />
         <Route path="submit_approval" element={<SubmitApproval changeCategory={changeCategory} />} />
       </Routes>
     </CartProvider>

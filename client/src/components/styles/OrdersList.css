@@ -1,4 +1,10 @@
+.orders_list{
+   position: relative;
+   top:170px;
+}
+
 .orders_headline{
+   text-align: center;
    margin-top: 20px;
    color: rgb(4, 87, 11);
    font-weight: 500;
@@ -11,6 +17,10 @@
    margin-top: 20px;
 }
 
+#column_headline{
+   color:rgb(4, 87, 11);
+}
+
 .link_to_order{
    width:92%;
    display: flex;
@@ -18,7 +28,7 @@
 
 .column_headline{
    width:8%;
-   background-color: rgb(230, 75, 19);
+   background-color: rgb(236, 182, 31);
    border: 1px solid rgb(10, 145, 145);
    /* rgb(4, 87, 11); */
    text-align: center;

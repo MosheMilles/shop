@@ -1,8 +1,7 @@
 import './styles/Intro.css';
 import Product from './Product';
 function Intro({allProducts}) {
-    console.log("intro")
-    console.log(allProducts)
+
     return (
         <div className="intro">
             <img className='intro_img' src="/סופר זמני.jpg" alt="סופר" />

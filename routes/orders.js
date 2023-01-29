@@ -13,6 +13,11 @@ router.post("/", async (req, res) => {
   
     let order = new OrderModel(req.body);
     order.id=(await OrderModel.find({})).length;
+    const currTime=new Date();
+    const minutes=currTime.getMinutes()>9?currTime.getMinutes():"0"+currTime.getMinutes();
+    console.log(minutes)
+    console.log(currTime.getMinutes()>9)
+    order.time=currTime.getDate()+"/"+currTime.getMonth()+1+"/"+currTime.getFullYear()+"    "+currTime.getHours()+":"+minutes;
     await order.save();
     console.log(order)
     res.json(order);

@@ -11,9 +11,6 @@ function Layout({ allProducts, currCategory, changeCategory, submitOrder }) {
 
     const [cartShown, setCartShown] = useState(false);
     const toggleCart = () => setCartShown(!cartShown);
-    console.log(currCategory)
-    console.log(!currCategory)
-    console.log(currCategory !== undefined)
     return (
         <div dir="rtl">
             <div className="fixed_header" />

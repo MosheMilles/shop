@@ -1,10 +1,16 @@
 .approval{
     background-color:rgb(2, 102, 97);
-    height:420px;
+    height:500px;
     padding-top:150px;
 }
 
-h5{
+#success,#thanks{
     color: white;
     text-align: center;
+}
+
+#back_to_site{
+    color: white;
+    text-align: center;
+    cursor: pointer;
 }

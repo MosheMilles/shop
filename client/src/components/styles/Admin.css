@@ -1,15 +1,42 @@
-.header{
-   margin: 200px;
+.admin{
+position:fixed;
+width: 100%;
+top:0;
 }
 
-.subheader{
-background-color: rgb(4, 87, 11);
-margin-top: 1px;
+.admin_header{
+    width: 100%;
+    background-color:rgb(2, 102, 97);
+    height:90px;
+    display: flex;
+    margin-bottom: 1px;
+    z-index: 3;
 }
 
-h1{
-    margin: 0;
+#admin_headline{
+    margin-right: 25%;
+   margin-left: 40px;
     color:white;
-    text-align: center;
+}
+
+.admin_options{
+    background-color:rgb(199, 23, 82);
+    width:100%;
+    display: flex;
+   justify-content: space-around;
+    height: 70px;
+    z-index: 3;
+}
+
+#admin_link{
+    text-decoration: none;
+}
+
+.admin_options div h2{
+    color:white;
     font-weight: 300;
+}
+
+.outlet{
+    z-index: 1;
 }
