@@ -95,6 +95,7 @@ function changeCategory(category){
   }
 
   function submitOrder({ name, address, phoneNumber, requestedTime, comments }) {
+    console.log("submit")
     axios.post('http://localhost:3001/api/orders', {
       name: name,
       address: address,
