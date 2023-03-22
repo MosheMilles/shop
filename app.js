@@ -7,12 +7,10 @@ require('dotenv').config({ override: true });
 require("./db/mongo_connect");
 
 
-///////////////
 var cors = require('cors');
 app.use(cors());
 
-app.use((req, res, next) => {
- 
+app.use((req, res, next) => { 
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
@@ -22,18 +20,13 @@ app.use((req, res, next) => {
   }
   next();
 });
-/////////////
 
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "client/build")));
 
-console.log(process.env.DB_USERNAME)
-console.log(process.env.DB_PASSWORD)
 
 routesInit(app);
-
-
 
 const server = http.createServer(app);
 let port = process.env.port || "3001";

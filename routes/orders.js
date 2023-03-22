@@ -14,25 +14,12 @@ router.post("/", async (req, res) => {
     let order = new OrderModel(req.body);
     order.id=(await OrderModel.find({})).length;
     const currTime=new Date();
+    const currMonth=currTime.getMonth()+1;
     const minutes=currTime.getMinutes()>9?currTime.getMinutes():"0"+currTime.getMinutes();
-    console.log(minutes)
-    console.log(currTime.getMinutes()>9)
-    order.time=currTime.getDate()+"/"+currTime.getMonth()+1+"/"+currTime.getFullYear()+"    "+currTime.getHours()+":"+minutes;
+    order.time=currTime.getDate()+"/"+currMonth+"/"+currTime.getFullYear()+"    "+currTime.getHours()+":"+minutes;
     await order.save();
-    console.log(order)
     res.json(order);
 });
-
-// router.delete("/:idDel", async (req, res) => {
-//     try {
-//         let data = await OrderModel.deleteOne({ _id: req.params.idDel });
-//         res.json(data);
-//     }
-//     catch (err) {
-//         console.log(err);
-//         res.status(400).send(err);
-//     };
-// });
 
 router.put("/:idEdit", async (req, res) => {
     // let validBody = validOrder(req.body);

@@ -19,6 +19,10 @@
      /* rgb(4, 87, 11); */
  }
  
+#time_col{
+    width: 13%;
+}
+
  .cell#comment{
     /* width:15%; */
 flex-grow: 1;

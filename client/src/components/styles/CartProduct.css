@@ -1,7 +1,10 @@
+.product_and_sale{
+    border-bottom: 1px dashed rgb(4, 87, 11);
+}
+
 .product_row {
     height: 50px;
     display: flex ;
-    border-bottom: 1px dashed rgb(4, 87, 11);
     justify-content: space-between;
     align-items: center;
     padding: 0px 8px;
@@ -39,4 +42,11 @@
 
 .button{
     cursor: pointer;
+}
+
+.sale_row{
+    padding: 0px 8px;
+    color:red;
+    display:flex;
+justify-content: space-between;
 }

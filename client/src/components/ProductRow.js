@@ -4,6 +4,7 @@ import './styles/ProductRow.css';
 import ProductDetails from './ProductDetails';
 
 function ProductRow({ product }) {
+    console.log(product)
     const cart = useContext(CartContext);
     const [open, setOpen] = useState(false);
     product.isOpen = open;
@@ -11,7 +12,7 @@ function ProductRow({ product }) {
     product.closeDialog = () => setOpen(false);
     return (
         <div>
-            <div className="product_row">
+            <div className="search_product_row">
                 <div className="image_container" onClick={product.openDialog}>
                     <img className="cart_product_image" src={product.image} alt={product.name} />
                 </div>

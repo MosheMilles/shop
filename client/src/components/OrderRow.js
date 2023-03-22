@@ -19,7 +19,7 @@ function OrderRow({ order, filterOrders,closeOrder }) {
             <Link to={`orders/${order._id}`} key={order._id} className="link_to_order">
                 <div className="cell">{order.id}</div>
                 <div className="cell">{order.time}</div>
-                <div className="cell">{order.requestedTime}</div>
+                <div className="cell" id="time_col">{order.date}<br/>{order.hours}</div>
                 <div className="cell">{order.name}</div>
                 <div className="cell">{order.address}</div>
                 <div className="cell">{order.phoneNumber}</div>

@@ -10,19 +10,10 @@ function Products({allProducts,setCurrCategory}) {
   setCurrCategory(category);
   let products = allProducts.filter(product => product.category === category)
   console.log(products)
-  const [searchDropdown, setSearchDropdown] = useState([]);
-  const updateSearch = (e) => {
-      const searchArray = products.filter(product => product.name.includes(e.target.value));
-      if (e.target.value.length >= 2) setSearchDropdown(searchArray);
-      else setSearchDropdown([]);
-  }
+  // console.log(currCategory)
+  
   return (
     <div className="products">
-      {/* <div className="headline_container">
-        <div className="icon_container"><img className="icon" src={`/${category}.png`} alt={category}></img></div>
-        <h1 className="category_headline">{category}</h1>
-        <input type="search" className="search_in_category" onChange={updateSearch} />
-      </div> */}
       <div className="cards">
       {products.map((product) => 
         <Product key={product.id} className="card" product={product} />

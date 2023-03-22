@@ -1,7 +1,6 @@
 import Logo from './Logo';
 import './styles/Footer.css';
 function Footer(){
-    console.log('hiiii')
 return(
 <div className="footer">
     <div>
