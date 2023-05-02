@@ -1,5 +1,5 @@
 import './styles/SubCatDropdown.css';
-const SubCatDropdown = ({ subCategories, dropdown, currCategory,changeCategory }) => {
+const SubCatDropdown = ({ subCategories, dropdown,changeCategory}) => {
  
   const change=(e)=>{console.log(e.target.textContent);
     changeCategory(e.target.textContent)};

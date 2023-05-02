@@ -36,12 +36,15 @@
     border-color: white;
 }
 
-.cart_products{
-    display: none;
-}
-
 .cart_products_shown{
     display: block;
+    position: absolute;
+    top:82px;
+    bottom: 0px;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+    z-index: 5;
 }
 
 #no_products{

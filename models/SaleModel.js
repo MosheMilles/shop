@@ -3,6 +3,7 @@ const Joi = require("joi");
 const saleSchema = new mongoose.Schema({
     id: Number,
     title: String,
+    status:String,
     products: Array,
     quantity: Number,
     specialPrice: Number,

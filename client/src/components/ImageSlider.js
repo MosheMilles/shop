@@ -1,30 +1,34 @@
 import './styles/ImageSlider.css';
 import { useState, useEffect } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { Cloudinary } from "@cloudinary/url-gen";
+import { fill } from "@cloudinary/url-gen/actions/resize";
+import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
+import { AdvancedImage } from '@cloudinary/react';
+import { auto } from '@cloudinary/url-gen/qualifiers/quality';
 
 function ImageSlider() {
-    const images = ["/סופר8.jpg", "/סופר7.jpg", "/סופר6.jpg", "/סופר5.jpg", "/סופר4.jpg", "/סופר3.jpg", "/סופר2.jpg", "/סופר1.jpg"];
+    const images = ["v1679578710/סופר3_bmjttd.jpg", "v1679578610/סופר6_ctuxj9.jpg", "v1679578710/סופר1_n1k1jk.jpg", "v1679578711/סופר5_doub9n.jpg", "v1679578711/סופר4_bn5klj.jpg", "v1679578712/סופר8_ombdkj.jpg"];
     const [currentImage, setCurrentImage] = useState(0);
 
+    const cld = new Cloudinary({
+        cloud: {
+            cloudName: 'dz8tawwr7'
+        }
+    });
+    const myImage = cld.image(images[currentImage]);
+    myImage.resize(fill().width(1600).height(400)).quality('auto');
+
     useEffect(() => {
-        const intervalId = setInterval(() => {
+        const imagesInterval = setInterval(() => {
             setCurrentImage(currentImage => (currentImage + 1) % images.length);
         }, 5000);
 
-        return () => clearInterval(intervalId);
+        return () => clearInterval(imagesInterval);
     }, []);
 
     return (
         <div className="image-container">
-            <TransitionGroup>
-                <CSSTransition key={images[currentImage]} classNames="fade" timeout={1000}>
-                    <img
-                        src={images[currentImage]}
-                        alt={`Image ${currentImage + 1}`}
-                        className="image"
-                    />
-                </CSSTransition>
-            </TransitionGroup>
+            <AdvancedImage cldImg={myImage} alt="super" className="slider" />
         </div>
     );
 };

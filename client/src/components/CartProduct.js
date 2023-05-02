@@ -2,19 +2,14 @@ import { useContext, useState } from 'react';
 import CartContext from "../contexts/CartContext";
 import './styles/CartProduct.css';
 import ProductDetails from './ProductDetails';
-import { height } from '@mui/system';
 
-function CartProduct({ product, salesToRender, index }) {
-    // salesToRender.forEach(sale =>{console.log (sale.row===index)})
-    // const saleName=product.discount.sale
+function CartProduct({ product }) {
     const cart = useContext(CartContext);
     const [open, setOpen] = useState(false);
-    // const sale = salesToRender.find(sale => sale.row === index)
     product.isOpen = open;
     product.openDialog = () => setOpen(true);
     product.closeDialog = () => setOpen(false);
 
-    // const renderSale=salesToRender.forEach(sale =>if(sale.row===index)return )
     return (
         <div>
             <div className="product_and_sale">

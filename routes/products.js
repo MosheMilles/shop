@@ -3,7 +3,7 @@ const { ProductModel, validProduct } = require("../models/ProductModel");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    let data = await ProductModel.find({});
+    let data = await ProductModel.find({isActive:true});
     console.log(data);
     res.json(data);
 });
@@ -14,6 +14,11 @@ router.post("/", async (req, res) => {
         return res.status(400).json(validBody.error.details);
     }
     let product = new ProductModel(req.body);
+    product.key = "barcode";
+    product.quantity = 0;
+    product.comment = "";
+    product.discount.sale = "";
+    product.discount.sum = 0;
     await product.save();
     res.json(product);
 });

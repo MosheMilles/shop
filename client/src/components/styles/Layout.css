@@ -43,7 +43,9 @@
 
 .cart{
   position:fixed;
+  /* height: 100%; */
   top: 148px;
+  bottom: 10px;
   left: 1%;
   width: 28%;
   z-index: 3;

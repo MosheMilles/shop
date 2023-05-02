@@ -20,6 +20,7 @@ import OrdersList from './OrdersList';
 import Layout from './Layout';
 import Submit from './Submit';
 import SubmitApproval from './SubmitApproval';
+import ProductConfig from './ProductConfig';
 
 function App() {
   const axios = require('axios').default;
@@ -49,7 +50,7 @@ function App() {
     fetch("http://localhost:3001/api/products")
       .then((res) => res.json())
       .then((data) => {
-        setAllProducts(data)
+        setAllProducts(data.filter(product=>product.isActive))
       });
   };
 
@@ -84,10 +85,7 @@ function App() {
       cartProducts.push(product);
     } else product.quantity = product.isWeighable ? product.quantity + 0.5 : product.quantity + 1;
     let updatedPrice = cart.totalPrice + product.price;
-     console.log(typeof cart.totalPrice)
-    console.log(typeof updatedPrice)
     cartProducts.map((product, index) => {
-      console.log(updatedPrice)
       if (product.sale) implementSale(product, index,updatedPrice);
       return product;
     });
@@ -107,7 +105,6 @@ function App() {
   };
 
   function implementSale(product, index,updatedPrice) {
-    console.log('hiiiii')
     const sale = temporarySales.find(sale => sale.id === product.sale);
     const saleProducts = cartProducts.filter(item => item.sale === product.sale);
     const saleProductsQuantity = saleProducts.reduce((prev, curr) => { return prev + curr.quantity }, 0);
@@ -117,9 +114,7 @@ function App() {
       + (saleProductsQuantity % sale.count) * saleProducts[0].price;
     const discount = (saleProducts.reduce((prev, curr) => { return prev + curr.price * curr.quantity }, 0) - saleProductsPrice).toFixed(2);
     const saleIndex = cartProducts.findLastIndex(item => item.sale === product.sale);
-    console.log(updatedPrice - exception)
     if (updatedPrice - exception >= sale.condition && index === saleIndex) {
-      console.log('hoooooo')
       product.discount.sum = discount;
       product.discount.sale = sale.title
     }
@@ -133,7 +128,6 @@ function App() {
 
   function submitOrder({ name, address, phoneNumber, date, hours, comments }) {
     console.log("submit")
-    // console.log(requestedTime)
     axios.post('http://localhost:3001/api/orders', {
       name: name,
       address: address,
@@ -155,6 +149,14 @@ function App() {
       });
   };
 
+  function createProduct(product){
+    axios.post('http://localhost:3001/api/products', product)
+  }
+
+  function updateProduct(product){
+    axios.put(`http://localhost:3001/api/products/${product.barcode}`, product)
+  }
+
   return (
     <CartProvider value={cart}>
       <Routes>
@@ -167,6 +169,7 @@ function App() {
         <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} allProducts={allProducts} />} >
           <Route index element={<OrdersList orders={orders} setOrders={setOrders} closeOrder={closeOrder} />} />
           <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
+          <Route path="product_config" element={<ProductConfig allProducts={allProducts} createProduct={createProduct} updateProduct={updateProduct} />} />
         </Route>
       </Routes>
     </CartProvider>

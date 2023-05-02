@@ -1,30 +1,20 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const productSchema = new mongoose.Schema({
-    id: Number,
+    barcode: Number,
     name: String,
+    isActive:Boolean,
     image: String,
     price: Number,
     quantity: Number,
-    total:Number,
+    // total:Number,
     isWeighable: Boolean,
     category: String,
     comment:String,
-    sale:Number
+    sale:Number,
+    discount:Object
 });
 const ProductModel = mongoose.model("products", productSchema);
-
-//////
-// const YourModel = require('path/to/your/model');
-
-ProductModel.updateMany({}, { $set: { discount: 0 } })
-  .then(() => {
-    console.log('New key added to all documents');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-//////
 
 exports.ProductModel = ProductModel;
 
