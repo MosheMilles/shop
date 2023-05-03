@@ -9,18 +9,17 @@
 // - אייקון טעינה -
 
 
-import './styles/App.css';
-import Products from './Products';
-import { useEffect, useState, useMemo } from 'react';
+import Products from './layout/Products/Products';
+import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CartProvider } from '../contexts/CartContext';
-import Admin from './Admin';
-import Order from './Order';
-import OrdersList from './OrdersList';
-import Layout from './Layout';
-import Submit from './Submit';
-import SubmitApproval from './SubmitApproval';
-import ProductConfig from './ProductConfig';
+import Admin from './pages/Admin/Admin';
+import Order from './pages/Order/Order';
+import OrdersList from './pages/Admin/OrdersList/OrdersList';
+import Home from './pages/Home/Home';
+import Submit from './pages/Submit/Submit';
+import SubmitApproval from './pages/SubmitApproval/SubmitApproval';
+import ProductConfig from './pages/Admin/ProductConfig/ProductConfig';
 
 function App() {
   const axios = require('axios').default;
@@ -160,7 +159,7 @@ function App() {
   return (
     <CartProvider value={cart}>
       <Routes>
-        <Route path="/" element={<Layout allProducts={allProducts} currCategory={currCategory} changeCategory={changeCategory} submitOrder={submitOrder} />}>
+        <Route path="/" element={<Home allProducts={allProducts} currCategory={currCategory} changeCategory={changeCategory} submitOrder={submitOrder} />}>
           <Route path="products/:category" element={
             <Products allProducts={allProducts} setCurrCategory={setCurrCategory} />} />
         </Route>

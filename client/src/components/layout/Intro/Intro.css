@@ -1,0 +1,30 @@
+.intro{
+    position: relative;
+    bottom:94px;
+    z-index: 2;
+}
+
+.sales_headline{
+    display:flex;
+    height: 88px;
+    margin-right: 60px;
+    align-items: center;
+    justify-content:right;
+}
+
+#sales_icon_cotainer{
+    height: 80%;
+    align-items: center;
+}
+
+#sales_icon{
+    height:70px;
+}
+
+#sales_headline_txt{
+    margin-right: 10px;
+    font-weight: 350;
+    color:  rgb(194, 30, 44);
+    font-size: 70px;
+}
+

@@ -1,0 +1,16 @@
+.approval{
+    background-color:rgb(2, 102, 97);
+    height:500px;
+    padding-top:150px;
+}
+
+#success,#thanks{
+    color: white;
+    text-align: center;
+}
+
+#back_to_site{
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}

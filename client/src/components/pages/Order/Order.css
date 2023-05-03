@@ -1,0 +1,28 @@
+.order_buttons{
+    display: flex;
+    position: fixed;
+    top:200px;
+    left: 80px;
+}
+#back_to_orders{
+    background-color: red;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 80px;
+    margin-left: 40px;
+}
+
+#print_order{
+    background-color: green;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 80px;
+}
+
+#order_container{
+    position: absolute;
+    top:200px;
+    width: 100%;
+}

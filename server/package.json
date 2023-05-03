@@ -12,9 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@cloudinary/react": "^1.11.2",
-    "@cloudinary/url-gen": "^1.9.2",
-    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
@@ -22,7 +19,6 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.0",
-    "nodemon": "^2.0.19",
-    "react-to-print": "^2.14.11"
+    "nodemon": "^2.0.19"
   }
 }
