@@ -49,7 +49,7 @@ function App() {
     fetch("http://localhost:3001/api/products")
       .then((res) => res.json())
       .then((data) => {
-        setAllProducts(data.filter(product=>product.isActive))
+        setAllProducts(data.filter(product => product.isActive))
       });
   };
 
@@ -85,7 +85,7 @@ function App() {
     } else product.quantity = product.isWeighable ? product.quantity + 0.5 : product.quantity + 1;
     let updatedPrice = cart.totalPrice + product.price;
     cartProducts.map((product, index) => {
-      if (product.sale) implementSale(product, index,updatedPrice);
+      if (product.sale) implementSale(product, index, updatedPrice);
       return product;
     });
     setCartProducts([...cartProducts]);
@@ -96,14 +96,14 @@ function App() {
       product.quantity = product.isWeighable ? product.quantity - 0.5 : product.quantity - 1;
       let updatedPrice = cart.totalPrice - product.price;
       cartProducts.map((product, index) => {
-        if (product.sale) implementSale(product, index,updatedPrice);
+        if (product.sale) implementSale(product, index, updatedPrice);
         return product;
       });
       setCartProducts(cartProducts.filter(item => item.quantity > 0));
     };
   };
 
-  function implementSale(product, index,updatedPrice) {
+  function implementSale(product, index, updatedPrice) {
     const sale = temporarySales.find(sale => sale.id === product.sale);
     const saleProducts = cartProducts.filter(item => item.sale === product.sale);
     const saleProductsQuantity = saleProducts.reduce((prev, curr) => { return prev + curr.quantity }, 0);
@@ -148,11 +148,11 @@ function App() {
       });
   };
 
-  function createProduct(product){
+  function createProduct(product) {
     axios.post('http://localhost:3001/api/products', product)
   }
 
-  function updateProduct(product){
+  function updateProduct(product) {
     axios.put(`http://localhost:3001/api/products/${product.barcode}`, product)
   }
 
