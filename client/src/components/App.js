@@ -20,6 +20,7 @@ import Home from './pages/Home/Home';
 import Submit from './pages/Submit/Submit';
 import SubmitApproval from './pages/SubmitApproval/SubmitApproval';
 import ProductConfig from './pages/Admin/ProductConfig/ProductConfig';
+import { ProductsProvider } from '../contexts/ProductsContext';
 
 function App() {
   const axios = require('axios').default;
@@ -157,21 +158,23 @@ function App() {
   }
 
   return (
+    <ProductsProvider value={allProducts}>
     <CartProvider value={cart}>
       <Routes>
-        <Route path="/" element={<Home allProducts={allProducts} currCategory={currCategory} changeCategory={changeCategory} submitOrder={submitOrder} />}>
+        <Route path="/" element={<Home currCategory={currCategory} changeCategory={changeCategory} submitOrder={submitOrder} />}>
           <Route path="products/:category" element={
-            <Products allProducts={allProducts} setCurrCategory={setCurrCategory} />} />
+            <Products setCurrCategory={setCurrCategory} />} />
         </Route>
-        <Route path="submit" element={<Submit submitOrder={submitOrder} allProducts={allProducts} />} />
+        <Route path="submit" element={<Submit submitOrder={submitOrder} />} />
         <Route path="submit_approval" element={<SubmitApproval changeCategory={changeCategory} />} />
-        <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} allProducts={allProducts} />} >
+        <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} />} >
           <Route index element={<OrdersList orders={orders} setOrders={setOrders} closeOrder={closeOrder} />} />
           <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
-          <Route path="product_config" element={<ProductConfig allProducts={allProducts} createProduct={createProduct} updateProduct={updateProduct} />} />
+          <Route path="product_config" element={<ProductConfig createProduct={createProduct} updateProduct={updateProduct} />} />
         </Route>
       </Routes>
     </CartProvider>
+    </ProductsProvider>
   );
 };
 

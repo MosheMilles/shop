@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import Logo from "../../common/Logo/Logo";
 
-function Admin({ orders, fetchOrders, allProducts }) {
+function Admin({ orders, fetchOrders }) {
 
     useEffect(() => {
         fetchOrders();

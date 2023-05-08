@@ -36,17 +36,11 @@ function Submit({ submitOrder,allProducts }) {
   return (
 
     <div className="summary">
-      <SearchHeader allProducts={allProducts} />
-      {/* <div id="summary_headline">
-        <h1 id="summary_headline_text">סיכום הזמנה</h1>
-      </div> */}
+      <SearchHeader />
       <div id="summary_headline">
-        {/* <div> */}
         <h1 id="summary_headline_text">סיכום הזמנה</h1>
-        {/* </div> */}
       </div>
       <div className="client_input">
-        {/* <FormControl fullWidth> */}
         <label id="name_input"><h1 id="details">שם מלא:</h1>
           <input id="summary_input" ref={nameInput} type="text" />
         </label> <br />
@@ -58,7 +52,6 @@ function Submit({ submitOrder,allProducts }) {
         </label> <br />
         <label id="time_input"><h1 id="details">מתי תרצו לקבל את המשלוח?</h1>
           <select id="date_input" ref={dateInput} >
-            {/* ref={dateInput} value="בחר יום"> */}
             <option value={getOrderDate(0)}>היום {getOrderDate(0)}</option>
             <option value={getOrderDate(1)}>מחר {getOrderDate(1)}</option>
             <option value={getOrderDate(2)}>{getOrderDate(2)}</option>
@@ -72,21 +65,6 @@ function Submit({ submitOrder,allProducts }) {
             <option value="16:00-20:00">16:00-20:00</option>
           </select>
         </label>
-        {/* <InputLabel id="order_day_label">חיהחסלזידחגהדחהדנ</InputLabel>
-  <Select
-    labelId="order_day_label"
-    id="order_day"
-    value={dateInput}
-    label="יום" */}
-        {/* // onChange={handleChange} */}
-        {/* // >
-  //   <MenuItem value="היום">Ten</MenuItem>
-  //   <MenuItem value="20">Twenty</MenuItem>
-  //   <MenuItem value="30">Thirty</MenuItem>
-  // </Select> */}
-
-        {/* <input ref={dateInput} type="text" /> */}
-
         <label id="comments_input"><h1 id="details">הערות:</h1>
           <input id="summary_input" ref={commentsInput} type="text" />
         </label> <br />
@@ -95,7 +73,6 @@ function Submit({ submitOrder,allProducts }) {
         <Button id="submit_button" onClick={submit}>שלח הזמנה</Button>
         <Link to=".."><Button id="back_button">חזור</Button></Link>
       </div>
-      {/* </FormControl> */}
     </div>
   )
 }

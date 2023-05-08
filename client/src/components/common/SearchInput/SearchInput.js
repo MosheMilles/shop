@@ -1,9 +1,11 @@
 import './SearchInput.css';
 import SearchIcon from '@mui/icons-material/Search';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import ProductRow from '../../layout/ProductRow/ProductRow';
+import ProductsContext from '../../../contexts/ProductsContext';
 
-function SearchInput({ className, allProducts, category }) {
+function SearchInput({ className, category }) {
+const allProducts=useContext(ProductsContext);
     const ref = useRef(null)
     const placeholder = category ? "חפש בקטגוריית " + category : "חפש מוצר";
     const [searchValue, setSearchValue] = useState("");

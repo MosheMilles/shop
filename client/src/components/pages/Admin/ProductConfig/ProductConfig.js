@@ -1,10 +1,12 @@
 import './ProductConfig.css';
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { TextField, Box, MenuItem, Button, FormControlLabel, Checkbox } from "@mui/material";
 import { styled } from '@mui/material';
 import { categories } from '../../../../categories';
+import ProductsContext from '../../../../contexts/ProductsContext';
 
-function ProductConfig({ allProducts, createProduct, updateProduct }) {
+function ProductConfig({ createProduct, updateProduct }) {
+    const allProducts=useContext(ProductsContext);
     const StyledTextField = styled(TextField)({
         '& label': {
             transformOrigin: "right !important",

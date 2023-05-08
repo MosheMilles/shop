@@ -3,7 +3,7 @@ import * as React from 'react';
 import { categories } from '../../../categories';
 import Category from '../Category/Category';
 
-export default function CategoriesBar({ allProducts, currCategory, changeCategory }) {
+export default function CategoriesBar({ currCategory, changeCategory }) {
 
   return (
     <nav>

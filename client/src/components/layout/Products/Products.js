@@ -1,10 +1,11 @@
 import './Products.css';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
 import Product from '../Product/Product.js';
-import Footer from '../Footer/Footer';
-function Products({allProducts,setCurrCategory}) {
+import { useContext } from 'react';
+import ProductsContext from '../../../contexts/ProductsContext';
 
+function Products({setCurrCategory}) {
+const allProducts=useContext(ProductsContext);
   let params = useParams();
   let category = params.category
   setCurrCategory(category);

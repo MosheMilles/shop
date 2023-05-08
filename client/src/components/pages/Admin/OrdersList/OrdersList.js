@@ -3,7 +3,7 @@ import OrderRow from "./OrdrRow/OrderRow";
 
 
 
-function OrdersList({ orders, setOrders, closeOrder, filterOrders }) {
+function OrdersList({ orders, setOrders, closeOrder }) {
 
 console.log(orders)
 
