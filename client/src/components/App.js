@@ -10,7 +10,7 @@
 
 
 import Products from './layout/Products/Products';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { CartProvider } from '../contexts/CartContext';
 import Admin from './pages/Admin/Admin';
@@ -25,7 +25,8 @@ import { ProductsProvider } from '../contexts/ProductsContext';
 function App() {
   const axios = require('axios').default;
   const navigate = useNavigate();
-  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducs] = useState([]);
+  const [shownProducts,setShownProducs]=useState([]);
   const [orders, setOrders] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [currCategory, setCurrCategory] = useState();
@@ -42,20 +43,34 @@ function App() {
     addProductComment: ({ product, productComment }) => addComment({ product, productComment })
   };
 
-  useEffect(() => {
-    fetchProducts()
-  }, []);
-
-  function fetchProducts() {
-    fetch("http://localhost:3001/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllProducts(data.filter(product => product.isActive))
-      });
+  function getProducts(category, searchQuery) {
+    console.log("hiiiiiiii")
+    if (category === "all") {
+      console.log("hiiiiiiii")
+      axios.get(`http://${process.env.REACT_APP_ADDRESS}/api/products?search=${searchQuery}`)
+        .then((res) => {
+          setProducs(res.data);
+          return products;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      setCurrCategory(category);
+      axios.get(`http://${process.env.REACT_APP_ADDRESS}/api/products?category=${category}&search=${searchQuery}`)
+        .then((res) => {
+          setProducs(res.data);
+          navigate(`products/${category}`)
+          return products;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    };
   };
 
   function fetchOrders() {
-    fetch("http://localhost:3001/api/orders")
+    fetch(`http://${process.env.REACT_APP_ADDRESS}/api/orders`)
       .then((res) => res.json())
       .then((data) => {
         setOrders(data.filter(order => order.status === "new_order"));
@@ -63,21 +78,21 @@ function App() {
   };
 
   function closeOrder(order) {
-    axios.put(`http://localhost:3001/api/orders/${order._id}`, {
+    axios.put(`http://${process.env.REACT_APP_ADDRESS}/api/orders/${order._id}`, {
       ...order,
       status: "archieve"
     })
   }
 
-  function changeCategory(category) {
-    if (category) {
-      navigate(`products/${category}`)
-    }
-    else {
-      setCurrCategory();
-      navigate('..')
-    }
-  }
+  // function changeCategory(category) {
+  //   if (category) {
+  //     navigate(`products/${category}`)
+  //   }
+  //   else {
+  //     setCurrCategory();
+  //     navigate('..')
+  //   }
+  // }
 
   function addToCart(product) {
     if (!cartProducts.includes(product)) {
@@ -128,7 +143,7 @@ function App() {
 
   function submitOrder({ name, address, phoneNumber, date, hours, comments }) {
     console.log("submit")
-    axios.post('http://localhost:3001/api/orders', {
+    axios.post(`http://${process.env.REACT_APP_ADDRESS}/api/orders`, {
       name: name,
       address: address,
       phoneNumber: phoneNumber,
@@ -150,30 +165,30 @@ function App() {
   };
 
   function createProduct(product) {
-    axios.post('http://localhost:3001/api/products', product)
+    axios.post(`http://${process.env.REACT_APP_ADDRESS}/api/products`, product)
   }
 
   function updateProduct(product) {
-    axios.put(`http://localhost:3001/api/products/${product.barcode}`, product)
+    axios.put(`http://${process.env.ADDRESS}/api/products/${product.barcode}`, product)
   }
 
   return (
-    <ProductsProvider value={allProducts}>
-    <CartProvider value={cart}>
-      <Routes>
-        <Route path="/" element={<Home currCategory={currCategory} changeCategory={changeCategory} submitOrder={submitOrder} />}>
-          <Route path="products/:category" element={
-            <Products setCurrCategory={setCurrCategory} />} />
-        </Route>
-        <Route path="submit" element={<Submit submitOrder={submitOrder} />} />
-        <Route path="submit_approval" element={<SubmitApproval changeCategory={changeCategory} />} />
-        <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} />} >
-          <Route index element={<OrdersList orders={orders} setOrders={setOrders} closeOrder={closeOrder} />} />
-          <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
-          <Route path="product_config" element={<ProductConfig createProduct={createProduct} updateProduct={updateProduct} />} />
-        </Route>
-      </Routes>
-    </CartProvider>
+    <ProductsProvider value={{ getProducts, currCategory, setCurrCategory }}>
+      <CartProvider value={cart}>
+        <Routes>
+          <Route path="/" element={<Home submitOrder={submitOrder} />}>
+            <Route path="products/:category" element={
+              <Products products={products} />} />
+          </Route>
+          <Route path="submit" element={<Submit submitOrder={submitOrder} />} />
+          <Route path="submit_approval" element={<SubmitApproval />} />
+          <Route path="admin" element={<Admin orders={orders} fetchOrders={fetchOrders} />} >
+            <Route index element={<OrdersList orders={orders} setOrders={setOrders} closeOrder={closeOrder} />} />
+            <Route path="orders/:_id" element={<Order orders={orders} fetchOrders={fetchOrders} />} />
+            <Route path="product_config" element={<ProductConfig createProduct={createProduct} updateProduct={updateProduct} />} />
+          </Route>
+        </Routes>
+      </CartProvider>
     </ProductsProvider>
   );
 };

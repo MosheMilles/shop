@@ -2,7 +2,7 @@ import './Product.css';
 import { useState, useContext } from 'react';
 import CartContext from '../../../contexts/CartContext';
 import ProductDetails from '../ProductDetails/ProductDetails';
-import { Card, CardMedia, CardContent, Button, Typography } from '@mui/material';
+import { Card, CardContent, Button, Typography } from '@mui/material';
 import ImageViewer from '../../common/ImageViewer';
 
 function Product({ product }) {
@@ -17,12 +17,6 @@ function Product({ product }) {
                 onMouseEnter={() => { setIsRaised(true) }} onMouseOut={() => { setIsRaised(false) }}>
                 <div className="dialog_openning" onClick={()=>setIsOpen(true)}>
                     <ImageViewer image={product.image} height="140" width="140" quality="auto" alt={product.name} className="produc_image" />
-                {/* <CardMedia
-                    component="img"
-                    height="140"
-                    image={product.image}
-                    alt={product.name}
-                /> */}
                 <CardContent>
                     <Typography className='product_name' gutterBottom variant="h5" component="div">
                         {product.name}

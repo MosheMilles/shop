@@ -1,15 +1,19 @@
+import { useContext } from 'react';
 import './SubCatDropdown.css';
-const SubCatDropdown = ({ subCategories, dropdown,changeCategory}) => {
- 
-  const change=(e)=>{console.log(e.target.textContent);
-    changeCategory(e.target.textContent)};
+import ProductsContext from '../../../../contexts/ProductsContext';
+import { Link } from 'react-router-dom';
+function SubCatDropdown({ subCategories, dropdown }) {
+  const { getProducts } = useContext(ProductsContext);
+  const getCaegoryProducts = (e) => {
+    getProducts(e.target.textContent, "")
+  };
   return (
     <div className="dropdown_container">
       <ul className={`subCatDropdown${dropdown ? "Show" : ""}`}>
         {subCategories.map((subCategory, index) => (
-          <li key={index}>
-              <h3 className="subCategories" onClick={change}>{subCategory}</h3>
-          </li>
+          <Link to= {`/products/${subCategory}`}><li key={index}>
+            <h3 className="subCategories" onClick={getCaegoryProducts}>{subCategory}</h3>
+          </li></Link>
         ))}
       </ul>
     </div>

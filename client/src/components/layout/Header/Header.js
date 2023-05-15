@@ -8,7 +8,7 @@ function SearchHeader({ changeCategory }) {
         return (
         <div className="search_bar">
             <div onClick={change}><Logo /></div>
-            <SearchInput className="general_search" />
+            <SearchInput category="all" />
         </div>
     )
 };
