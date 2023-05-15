@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     console.log(filterCategory)
     const searchQuery = req.query.search;
     console.log(searchQuery)
-    if (searchQuery!==""){
+    if (searchQuery){
         console.log("sdaghskjg")
         const regExp=new RegExp(searchQuery);
         console.log(regExp)

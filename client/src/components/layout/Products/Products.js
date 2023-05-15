@@ -1,26 +1,31 @@
 import './Products.css';
 import { useParams } from 'react-router-dom';
 import Product from '../Product/Product.js';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import ProductsContext from '../../../contexts/ProductsContext';
 
-function Products({products}) {
-  console.log(products)
-// const allProducts=useContext(ProductsContext);
-//   let params = useParams();
-//   let category = params.category
-//   setCurrCategory(category);
-//   let products = allProducts.filter(product => product.category === category)
-//   console.log(products)
-  // console.log(currCategory)
+function Products() {
 
-  
+  const axios = require('axios').default;
+  const [products, setProducts] = useState([]);
+  const { currCategory, setCurrCategory } = useContext(ProductsContext);
+  const { category } = useParams();
+  if (currCategory !== category) {
+    setCurrCategory(category);
+    axios.get(`http://${process.env.REACT_APP_ADDRESS}/api/products?category=${category}`)
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
   return (
     <div className="products">
       <div className="cards">
-      {products.map((product) => 
-        <Product key={product.id} className="card" product={product} />
-      )}
+        {products.map((product) =>
+          <Product key={product.id} className="card" product={product} />
+        )}
       </div>
     </div>
   );

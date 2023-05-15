@@ -3,6 +3,7 @@ import { fill } from "@cloudinary/url-gen/actions/resize";
 import { AdvancedImage } from '@cloudinary/react';
 
 function ImageViewer({image, width, height, quality,alt,className}){
+  console.log(image)
     const cld = new Cloudinary({
         cloud: {
           cloudName: 'dz8tawwr7'

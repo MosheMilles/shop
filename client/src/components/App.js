@@ -25,11 +25,9 @@ import { ProductsProvider } from '../contexts/ProductsContext';
 function App() {
   const axios = require('axios').default;
   const navigate = useNavigate();
-  const [products, setProducs] = useState([]);
-  const [shownProducts,setShownProducs]=useState([]);
   const [orders, setOrders] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
-  const [currCategory, setCurrCategory] = useState();
+  const [currCategory, setCurrCategory] = useState("all");
   const temporarySales = [{ id: 1, title: "ניסיון1 וניסיון2 - 3 ב-30", products: [101, 102], count: 3, specialPrice: 30, condition: 100, exception: [101, 102, 110] }];
   const cart = {
     data: cartProducts,
@@ -41,32 +39,6 @@ function App() {
       setCartProducts([]);
     },
     addProductComment: ({ product, productComment }) => addComment({ product, productComment })
-  };
-
-  function getProducts(category, searchQuery) {
-    console.log("hiiiiiiii")
-    if (category === "all") {
-      console.log("hiiiiiiii")
-      axios.get(`http://${process.env.REACT_APP_ADDRESS}/api/products?search=${searchQuery}`)
-        .then((res) => {
-          setProducs(res.data);
-          return products;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    } else {
-      setCurrCategory(category);
-      axios.get(`http://${process.env.REACT_APP_ADDRESS}/api/products?category=${category}&search=${searchQuery}`)
-        .then((res) => {
-          setProducs(res.data);
-          navigate(`products/${category}`)
-          return products;
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    };
   };
 
   function fetchOrders() {
@@ -83,16 +55,6 @@ function App() {
       status: "archieve"
     })
   }
-
-  // function changeCategory(category) {
-  //   if (category) {
-  //     navigate(`products/${category}`)
-  //   }
-  //   else {
-  //     setCurrCategory();
-  //     navigate('..')
-  //   }
-  // }
 
   function addToCart(product) {
     if (!cartProducts.includes(product)) {
@@ -173,12 +135,12 @@ function App() {
   }
 
   return (
-    <ProductsProvider value={{ getProducts, currCategory, setCurrCategory }}>
+    <ProductsProvider value={{ currCategory, setCurrCategory }}>
       <CartProvider value={cart}>
         <Routes>
           <Route path="/" element={<Home submitOrder={submitOrder} />}>
             <Route path="products/:category" element={
-              <Products products={products} />} />
+              <Products />} />
           </Route>
           <Route path="submit" element={<Submit submitOrder={submitOrder} />} />
           <Route path="submit_approval" element={<SubmitApproval />} />

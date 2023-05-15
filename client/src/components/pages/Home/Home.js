@@ -7,26 +7,30 @@ import Footer from '../../layout/Footer/Footer';
 import { Outlet } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import Intro from '../../layout/Intro/Intro';
+import ImageViewer from '../../common/ImageViewer';
 import ProductsContext from '../../../contexts/ProductsContext';
 
 function Layout() {
     const {currCategory}=useContext(ProductsContext);
     const [isCartShown, setIsCartShown] = useState(false);
     const toggleCart = () => setIsCartShown(!isCartShown);
+    console.log(currCategory)
+    console.log(currCategory.image)
     return (
         <div dir="rtl">
             <div className="fixed_header" />
             <SearchHeader />
             <CategoriesBar />
             <Cart className="cart" isCartShown={isCartShown} toggleCart={toggleCart} />
-            {currCategory &&
+            {currCategory!=="all" &&
                 <div className="headline_container">
-                    <div className="icon_container"><img className="icon" src={`/${currCategory}.png`} alt={currCategory}></img></div>
+                    {/* <div className="icon_container"><img className="icon" src={`/${currCategory}.png`} alt={currCategory}></img></div> */}
+                    <ImageViewer image={currCategory.image} height="140" width="140" quality="auto" alt={currCategory.name} className="icon" />
                     <h1 className="category_headline">{currCategory}</h1>
                     <div><SearchInput category={currCategory} /></div>
                 </div>} 
             <div className={`products_container${isCartShown ? "_70" : "_full"}`} >
-            {!currCategory && <Intro />}
+            {currCategory==="all" && <Intro />}
                 <Outlet />
                 <Footer />
             </div>
