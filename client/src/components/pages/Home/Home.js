@@ -9,9 +9,12 @@ import { useContext, useState } from 'react';
 import Intro from '../../layout/Intro/Intro';
 import ImageViewer from '../../common/ImageViewer';
 import ProductsContext from '../../../contexts/ProductsContext';
+import { categories } from '../../../categories';
 
 function Layout() {
     const {currCategory}=useContext(ProductsContext);
+    // const category=categories.forEach(category=>{if(!category.subCategories).find(item=>item.name===currCategory)})
+    // console.log(category)
     const [isCartShown, setIsCartShown] = useState(false);
     const toggleCart = () => setIsCartShown(!isCartShown);
     console.log(currCategory)

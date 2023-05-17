@@ -8,9 +8,8 @@ export default function CategoriesBar({ currCategory, changeCategory }) {
   return (
     <nav>
       <ul className="categories">
-        {categories.map((category, index) =>
-           <Category category={category} index={index} currCategory={currCategory} changeCategory={changeCategory} />
-        )}
+        {categories.map(category =>
+           <Category key={category.name} category={category} />)}
       </ul>
     </nav>
   );

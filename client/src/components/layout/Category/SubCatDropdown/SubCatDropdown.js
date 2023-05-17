@@ -12,7 +12,7 @@ function SubCatDropdown({ category, dropdown }) {
     <div className="dropdown_container">
       <ul className={`subCatDropdown${dropdown ? "Show" : ""}`}>
         {category.subCategories.map((subCategory, index) => (
-          <Link to= {`/products/${subCategory.name}`}>
+          <Link to= {`/products/${subCategory.name}`} key={subCategory.name}>
           <li key={index}>
             <h3 className="subCategories" 
             // onClick={getCaegoryProducts}
