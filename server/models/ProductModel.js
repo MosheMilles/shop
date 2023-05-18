@@ -6,15 +6,13 @@ const productSchema = new mongoose.Schema({
     isActive:Boolean,
     image: String,
     price: Number,
-    quantity: Number,
-    // total:Number,
     isWeighable: Boolean,
     category: String,
-    comment:String,
     sale:Number,
-    discount:Object
 });
 const ProductModel = mongoose.model("products", productSchema);
+/////////
+///////
 
 exports.ProductModel = ProductModel;
 

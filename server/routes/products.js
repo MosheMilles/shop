@@ -3,26 +3,21 @@ const { ProductModel, validProduct } = require("../models/ProductModel");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    console.log(req.query.category)
-    
-    ///////
     const filter = { isActive: true }
     const filterCategory = req.query.category;
     if (filterCategory) filter.category = filterCategory
-    console.log(filterCategory)
     const searchQuery = req.query.search;
-    console.log(searchQuery)
-    if (searchQuery){
-        console.log("sdaghskjg")
-        const regExp=new RegExp(searchQuery);
-        console.log(regExp)
-        filter.name=regExp;
+    if (searchQuery) {
+        const regExp = new RegExp(searchQuery);
+        filter.name = regExp;
     }
-    console.log('hiiiiiii')
-    ///////
-    let data = await ProductModel.find(filter);
-    console.log(data);
-    res.json(data);
+    let data = await ProductModel.find(filter).lean();
+    console.log(data)
+    const products = data.map((product) => {
+        return { ...product, quantity: 0, discount: { sum: 0, sale: "" } }
+    })
+    console.log(products)
+    res.json(products);
 });
 
 router.post("/", async (req, res) => {

@@ -14,6 +14,7 @@ function Products() {
     setCurrCategory(category);
     axios.get(`http://${process.env.REACT_APP_ADDRESS}/api/products?category=${category}`)
       .then((res) => {
+        console.log(res.data)
         setProducts(res.data);
       })
       .catch(error => {
@@ -24,7 +25,7 @@ function Products() {
     <div className="products">
       <div className="cards">
         {products.map((product) =>
-          <Product key={product.id} className="card" product={product} />
+          <Product key={product.barcode} className="card" product={product} />
         )}
       </div>
     </div>
