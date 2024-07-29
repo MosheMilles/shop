@@ -1,0 +1,56 @@
+.fixed_header{
+  position: fixed;
+  top:0px;
+  width: 100%;
+  z-index: 3;
+  background-color: rgb(7, 44, 125);
+  height: 200px;
+}
+
+.plus{
+color:white;
+position: absolute;
+top:-20px;
+left:20px;
+font-size: 90px;
+font-weight:50; ;
+}
+
+h1{
+  margin-right: 20px;
+  font-size: 40px;
+  color: white;
+}
+
+span{
+  border-right: 1px snow solid;
+  padding-right:10px;
+  color:rgb(151, 152, 237);
+}
+
+.input_container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+position: absolute;
+top:147px;
+
+z-index: 4;
+}
+
+.headline_container{
+  position: fixed;
+  top:148px;
+  width: 71%;
+  z-index: 2;
+  /* background-color: white; */
+  display:flex;
+  height: 88px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.items_container{
+  position:absolute;
+  width: 100%;
+  }

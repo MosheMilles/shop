@@ -1,0 +1,18 @@
+.item{
+    left:50%;
+    transform: translate(-50%);
+    position: absolute;
+    top:200px;
+    text-align: center;
+    /* height: 100%; */
+    width:65%;
+    overflow: auto;
+}
+
+h2{
+color:rgb(59, 170, 59);
+}
+
+img{
+    width:80%;
+}
