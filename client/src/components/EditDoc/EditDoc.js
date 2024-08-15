@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
 import DocService from '../../DocService';
-import './Item.css';
+import './EditDoc.css';
 
-function Item({items}) {
+function EditDoc({items}) {
   
     console.log(items)
     console.log({items})
@@ -22,14 +22,27 @@ function Item({items}) {
     console.log(item)
     console.log(item.itemArray)
 
+    // const updateDoc = () => {
+    //     axios.put(`/api/documents/${id}`, { document })
+    //       .then(() => {
+    //         alert('Document saved successfully!');
+    //         navigate(`/doc/${id}`);
+    //       })
+    //       .catch((error) => {
+    //         console.error('There was an error saving the document!', error);
+    //       });
+    //   };
+
     return (
         <div className="item" key={item.id} >
 
 
-            <h2 className="title">{item.title}</h2>
+            <h2 contentEditable suppressContentEditableWarning className="title">{item.title}</h2>
             {item.itemArray.map(subItem => (
                 <div key={subItem.id}>
-                    {subItem.type === "txt" && <p>{subItem.txt}</p>}
+                    {subItem.type === "txt" && <p   contentEditable
+              suppressContentEditableWarning
+              >{subItem.txt}</p>}
                     {subItem.type === "image" && <img src={subItem.src} alt={subItem.alt} width={subItem.width?subItem.width:"80%"} />}
                 </div>
             
@@ -39,4 +52,4 @@ function Item({items}) {
     )
 }
 
-export default Item;
+export default EditDoc;

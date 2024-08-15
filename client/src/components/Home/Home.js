@@ -4,11 +4,12 @@ import { Link, Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 function Layout({docs}) {
+    console.log(docs)
     return (
         <div dir="rtl">
             <div className="fixed_header" >
                 <h1>  מערכת מידע   <span>  מחלקת גביה  </span></h1>
-                <Link to="insert"><div className="plus" >+</div></Link>
+                <Link to="edit"><div className="plus" >+</div></Link>
                 <div className='input_container'>
                     <SearchInput items={docs} />
                 </div>

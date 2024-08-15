@@ -22,12 +22,15 @@ h1{
     width: 100%;
     position: absolute;
     top:160px;
-    padding-right: 80px;
-    padding-left: 80px;
 }
 
 .add_or_update{
     border-bottom: 1px darkgreen dashed;
+}
+
+.edit{
+    position: relative;
+    top:-200px;
 }
 
 .button{
