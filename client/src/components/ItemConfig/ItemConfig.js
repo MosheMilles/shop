@@ -1,57 +1,50 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import './ItemConfig.css';
-import { FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from "@mui/material";
 import { useState } from "react";
+import SearchInput from "../SearchInput/SearchInput";
+import CustomRadioGroup from "../CustomRadioGroup";
+import Buttons from "../Buttons/Buttons";
 
-function ItemConfig({ createDoc, addDocs, item }) {
+function ItemConfig() {
 
-     const [value,setValue]=useState('new');
-    const [tempDoc, setTempDoc] = useState(item ? item : { title: "", itemArray: [] });
+    const [value, setValue] = useState('');
+    const navigate = useNavigate();
 
-    function addText(array, index, text) {
-        const idx = index ? index : array.length - 1;
-        array.splice(idx, 0, { type: "txt", txt: { text } });
-        setTempDoc({...tempDoc,itemArray:array});
-    }
 
-    function handleChange(){
-        const handleChange = (event) => {
-            setValue(event.target.value);
-          };
-    }
+    const options = [
+        { label: 'הוסף מסמך חדש', value: 'new' },
+        { label: 'עדכן מסמך קיים', value: 'old' },
+    ];
+
+
+    const handleRadioChange = (value) => {
+        console.log(value);
+        if (value === 'new') {
+            navigate('new'); // החלף בנתיב הרצוי
+        }
+        setValue(value);
+    };
 
     return (
         <div className="item_config" >
+            {/* <div className="fixed"> */}
             <div className="header">
                 <h1>עריכת מסמך</h1>
                 <Link className="back" to="..">חזרה</Link>
             </div>
-            <div className="form">
-                <div className="add_or_update">
-                    <FormControl>
-                        <RadioGroup
-                        row
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="new"
-                            name="radio-buttons-group"
-                            onChange={handleChange}
-                        >
-                            <FormControlLabel value="new" control={<Radio />} label="הוסף מסמך חדש" />
-                            <FormControlLabel value="old" control={<Radio />} label="עדכן מסמך קיים" />
-                        </RadioGroup>
-                    </FormControl>
+            <div className="container_1">
+                <div>
+                    <CustomRadioGroup options={options} name="customGroup" onChange={handleRadioChange} />
                 </div>
-               <div className="edit">
-                <Outlet />
+                <div className="input_container_edit"> {value === "old" && <SearchInput edit />}</div>
+                <div className="buttons_container">
+                    <Buttons />
                 </div>
-                <Button className="button" onClick={createDoc} >
-                    jkglg
-                </Button>
-                <Button className="button" onClick={addDocs} >
-                    הוסף
-                </Button>
             </div>
-
+            {/* </div> */}
+            <div className="edit">
+                <Outlet />
+            </div>
         </div >
     )
 }

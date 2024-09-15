@@ -1,0 +1,13 @@
+.item_header{
+    margin-top: 10px;
+    padding: 1px;
+    border-top: rgb(59, 170, 59) dashed 1px;
+    border-bottom:rgb(59, 170, 59) dashed 1px;
+    color:rgb(59, 170, 59);
+}
+.header_txt{
+    color:rgb(154, 153, 153);
+    margin: 1px;
+    font-size: 15px;
+    font-weight:500;
+}

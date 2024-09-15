@@ -10,9 +10,13 @@
 }
 
 h2{
-color:rgb(59, 170, 59);
+color:rgb(57, 135, 57);
 }
 
 img{
     width:80%;
+}
+
+.item_text{
+    text-align: right;
 }
