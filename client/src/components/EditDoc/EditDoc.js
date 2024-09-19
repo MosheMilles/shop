@@ -62,7 +62,7 @@ function EditDoc() {
           >{subItem.txt}</p>}
           {subItem.type === "image" && <img  src={subItem.src} alt={subItem.alt} width={subItem.width ? subItem.width : "80%"} />}
           <div className="small_buttons_cont">
-            <Buttons small />
+            <Buttons small addParagraph />
           </div>
         </div>
 

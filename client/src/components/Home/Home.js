@@ -8,7 +8,8 @@ function Layout() {
         <div dir="rtl">
             <div className="fixed_header" >
                 <h1>  מערכת שיתוף ידע   <span>  מחלקת גביה  </span></h1>
-                <Link to="edit"><div className="plus" >+</div></Link>
+                <Link to="edit/new"><div className="plus" >+</div></Link>
+                
                 <div className='input_container'>
                     <SearchInput />
                 </div>

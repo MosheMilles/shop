@@ -62,41 +62,10 @@ h1 {
 }
 
 .buttons_container{
-    margin:auto;
-width: 50%;
+width: 40%;
 }
 
 .edit {
     width: 100%;
     z-index: 1;
-}
-.item{
-    left:50%;
-    transform: translate(-50%);
-    position: absolute;
-    top:200px;
-    text-align: center;
-    /* height: 100%; */
-    width:65%;
-    /* overflow: auto; */
-    z-index: 1;
-
-}
-.sub_item{
-    margin-bottom: 7px;
-    z-index: 1;
-}
-
-h2{
-color:rgb(59, 170, 59);
-}
-
-img{
-    width:80%;
-}
-
-.small_buttons_cont{
-    /* height: 10px; */
-    clear: both; /* יבטיח שהכפתורים יהיו אחרי כל אלמנט, כולל תמונות */
-    display: block; /* מבטיח שהכפתורים יקבלו שורה משלהם */
 }

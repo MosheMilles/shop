@@ -10,6 +10,7 @@
     background-color: rgb(78, 77, 74);
     border: 1px rgb(255, 255, 255) solid;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .buttons > div > div{
@@ -36,9 +37,11 @@
     width: 20%;
     margin-left: 10px;
     color: white;
-    background-color: rgb(199, 195, 195);
+    background-color: rgb(156, 154, 247);
+    /* background-color: rgb(199, 195, 195); */
     /* border: 1px rgb(255, 255, 255) solid; */
     border-radius: 7px;
+    cursor: pointer;
 }
 
 .small_buttons > div > div{

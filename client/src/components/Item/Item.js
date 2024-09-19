@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import EditIcon from '@mui/icons-material/Edit';
 import { useState,useEffect,useContext } from "react";
 import DocService from '../../DocService';
 import './Item.css';
@@ -25,7 +26,9 @@ console.log(docs)
     console.log(item.itemArray)
 
     return (
+        
         <div className="item" key={item.id} >
+            <Link to={`../../edit/${item.id}`} className="edit_icon"><EditIcon /></Link>
 <ItemHeader />
 
             <h2 className="title">{item.title}</h2>

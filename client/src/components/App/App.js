@@ -23,19 +23,23 @@ function App() {
 
   console.log(docs);
 
+
   return (
     <DocsContext.Provider value={{ docs, setDocs }}>
-    <Routes>
-      <Route path="/" element={<Home />}>
-        <Route path="items/:itemId" element={
-          <Item />} />
-      </Route>
-        <Route path="edit" element={<ItemConfig />} >
-          <Route path=":itemId" element={<EditDoc />} />
-          <Route path="new" element={<NewDoc />} />
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="items/:itemId" element={
+            <Item />} />
         </Route>
+        <Route path="edit/:itemId" element={<ItemConfig />} />
+        {/* </Route> */}
 
-    </Routes>
+        {/* <Route path="edit" element={<ItemConfig  />} >
+          <Route path=":itemId" element={<EditDoc  />} />
+          <Route path="new" element={<NewDoc />} />
+        </Route> */}
+
+      </Routes>
     </DocsContext.Provider>
   );
 };
